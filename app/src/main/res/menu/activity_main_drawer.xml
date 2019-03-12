@@ -22,7 +22,7 @@
             android:title="Official Events" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="Saved Events" />
     </group>
 
@@ -30,7 +30,7 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_menu_manage"
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_send"

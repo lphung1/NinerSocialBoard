@@ -16,5 +16,8 @@ public class StudentOrgList extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         setContentView(myWebView);
         myWebView.loadUrl("https://ninerengage.uncc.edu/organizations");
+
+
+
     }
 }
