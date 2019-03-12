@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "937757460461",
+    "firebase_url": "https://ninersoboard.firebaseio.com",
+    "project_id": "ninersoboard",
+    "storage_bucket": "ninersoboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937757460461:android:adb3c3464f95e5e5",
+        "android_client_info": {
+          "package_name": "com.example.ninersocialapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937757460461-74amq3tvm8mihstuhajkgmae1gr7r11a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ75vYv307Cjam6U2p5hN6smjHDjbcLXA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937757460461:android:7120f76b30612cc7",
+        "android_client_info": {
+          "package_name": "com.example.ninerstudentorgboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937757460461-74amq3tvm8mihstuhajkgmae1gr7r11a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ75vYv307Cjam6U2p5hN6smjHDjbcLXA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
