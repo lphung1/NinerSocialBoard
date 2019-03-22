@@ -14,9 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener  {
+
+        public static ArrayList<Post> postArrayList = new ArrayList<Post>();
+        PostListFragment postListFragment = new PostListFragment();
+        StudentOrgList studentOrgList = new StudentOrgList();
 
 
     @Override
@@ -26,7 +33,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        postArrayList.add(new Post("First post", "User1", 0));
 
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgList);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, postListFragment).commit();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +56,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
 
     }//end oncreate
@@ -92,10 +104,10 @@ public class MainActivity extends AppCompatActivity
             Log.d("MainActivity:", "Option orglist selected");
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, new StudentOrgList()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, studentOrgList ).commit();
 
         } else if (id == R.id.board_feed_menu) {
-
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, postListFragment).commit();
 
         } else if (id == R.id.official_events_menu) {
 
@@ -115,6 +127,9 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }//end onNavigationItemSelected
+
+
+
 
 
 

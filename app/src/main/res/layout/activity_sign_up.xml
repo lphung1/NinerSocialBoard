@@ -9,6 +9,8 @@
     tools:context=".SignUp">
 
 
+
+
     <EditText
         android:id="@+id/enter_uncc_email_edit_text"
         android:layout_width="0dp"

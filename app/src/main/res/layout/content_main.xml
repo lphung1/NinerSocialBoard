@@ -8,6 +8,13 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <ListView
+        android:id="@+id/content_main_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
