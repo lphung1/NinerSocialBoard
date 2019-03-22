@@ -15,9 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+        ArrayList<Post> postArrayList = new ArrayList<Post>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
