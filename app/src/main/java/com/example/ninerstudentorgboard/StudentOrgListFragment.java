@@ -18,7 +18,7 @@ import android.webkit.WebViewClient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentOrgList extends Fragment{
+public class StudentOrgListFragment extends Fragment{
 
 
     @Nullable

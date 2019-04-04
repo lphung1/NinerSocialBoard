@@ -1,14 +1,13 @@
 package com.example.ninerstudentorgboard;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.example.ninerstudentorgboard.JavaClasses.Post;
 
 
 /**
@@ -18,6 +17,14 @@ import android.widget.ListView;
  * interface.
  */
 public class PostListFragment extends Fragment {
+
+    CustomAdapter adapter;
+
+    public void updateFragment1ListView(){
+
+        adapter.notifyDataSetChanged();
+
+    }
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -29,7 +36,7 @@ public class PostListFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public PostListFragment() {
+    public PostListFragment(){
     }
 
     // TODO: Customize parameter initialization
@@ -39,6 +46,7 @@ public class PostListFragment extends Fragment {
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -54,12 +62,14 @@ public class PostListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        adapter = new CustomAdapter(getActivity(), R.layout.post_item, MainActivity.postArrayList);
         View view = inflater.inflate(R.layout.content_main, container, false);
         ListView listView = view.findViewById(R.id.content_main_listview);
         // Set the adapter
-        CustomAdapter adapter = new CustomAdapter(getActivity(), R.layout.post_item, MainActivity.postArrayList);
+        adapter.notifyDataSetChanged();
 
         listView.setAdapter(adapter);
+
 
 
         return view;

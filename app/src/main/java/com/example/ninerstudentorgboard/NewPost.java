@@ -7,21 +7,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ninerstudentorgboard.JavaClasses.Post;
+
 import java.util.Calendar;
+
+import static com.example.ninerstudentorgboard.MainActivity.postArrayList;
 
 public class NewPost extends AppCompatActivity {
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private Button submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
         mDisplayDate = findViewById(R.id.selectDateTextView);
+        submitButton = findViewById(R.id.submit_newPost);
+        final EditText postContent = findViewById(R.id.postEditText_newPost);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String text = postContent.getText().toString();
+                Log.d("Post Content", "" + text);
+                postArrayList.add(new Post(text, "User1", postArrayList.size()));
+                Log.d("Arraylist size", "" + postArrayList.size());
+                finish();
+            }
+        });
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +61,9 @@ public class NewPost extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+
+
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
