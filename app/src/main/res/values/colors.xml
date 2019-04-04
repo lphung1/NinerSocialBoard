@@ -3,11 +3,10 @@
     <color name="colorPrimary">#00713C</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-<<<<<<< HEAD
     <color name="textColor">#0C0C0C</color>
     <color name="colorSecondary">#484848</color>
-    <color name="icons">#9A8648</color>
-=======
+    <color name="buttons">#9A8648</color>
+
 
     <color name="primary">#0097D3</color>
     <color name="primary_dark">#005B7F</color>
@@ -47,5 +46,4 @@
     <color name="follow_button_pressed_color">#0087BC</color>
     <color name="follow_button_light_color">@color/white</color>
     <color name="follow_button_light_pressed_color">#f7f7f7</color>
->>>>>>> aba67efb4505106c811787c0b391a3439c39733e
 </resources>
