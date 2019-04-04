@@ -25,7 +25,7 @@ public class CustomAdapter extends ArrayAdapter<Post> {
         Post post = this.getItem(position);
 
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.post_item, parent, false);
-        TextView postString = convertView.findViewById(R.id.textViewPost);
+        TextView postString = convertView.findViewById(R.id.detailsTextView);
         //ImageView appImage = convertView.findViewById(R.id.appImageView);
 
         postString.setText(post.getPostString());
