@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="742dp"
         android:background="@drawable/side_nav_bar"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/icons"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_container_main"></LinearLayout>
 
