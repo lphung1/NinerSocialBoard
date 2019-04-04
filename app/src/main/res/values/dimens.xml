@@ -6,4 +6,10 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="small_intrinsic_padding">4dp</dimen>
+    <dimen name="intrinsic_padding">8dp</dimen>
+    <dimen name="large_intrinsic_padding">16dp</dimen>
+    <dimen name="post_counters_item_width">50dp</dimen>
+    <dimen name="post_counter_radius">16dp</dimen>
+    <dimen name="post_card_elevation">3dp</dimen>
 </resources>
