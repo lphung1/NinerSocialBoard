@@ -1,4 +1,4 @@
-package com.example.ninerstudentorgboard;
+package com.example.ninerstudentorgboard.JavaClasses;
 
 import java.text.DateFormat;
 import java.util.Calendar;

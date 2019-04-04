@@ -14,7 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
+
+import com.example.ninerstudentorgboard.JavaClasses.Post;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity
 
         public static ArrayList<Post> postArrayList = new ArrayList<Post>();
         PostListFragment postListFragment = new PostListFragment();
-        StudentOrgList studentOrgList = new StudentOrgList();
+        StudentOrgListFragment studentOrgListFragment = new StudentOrgListFragment();
 
 
     @Override
@@ -33,18 +34,24 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        postArrayList.add(new Post("First post", "User1", 0));
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgList);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgListFragment);
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, postListFragment).commit();
 
+
+        //on click listener for add post button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                Intent i = new Intent(MainActivity.this, NewPost.class);
+                startActivity(i);
+
             }
         });
 
@@ -60,6 +67,21 @@ public class MainActivity extends AppCompatActivity
 
 
     }//end oncreate
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        postListFragment.updateFragment1ListView();
+        Log.d("On Resume Called", "Main Activity");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //postListFragment.updateFragment1ListView();
+        Log.d("On Start Called", "Main Activity");
+    }
 
     @Override
     public void onBackPressed() {
@@ -104,7 +126,7 @@ public class MainActivity extends AppCompatActivity
             Log.d("MainActivity:", "Option orglist selected");
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, studentOrgList ).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, studentOrgListFragment).commit();
 
         } else if (id == R.id.board_feed_menu) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, postListFragment).commit();

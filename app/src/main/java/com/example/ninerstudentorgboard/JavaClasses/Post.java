@@ -1,4 +1,4 @@
-package com.example.ninerstudentorgboard;
+package com.example.ninerstudentorgboard.JavaClasses;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -7,23 +7,25 @@ import java.util.Date;
 
 public class Post {
 
-    String postString, user, location, dateString;
+    String postString, user, location, postDateString, eventDateString, tag;
     int id;
     ArrayList<Comment> commentArrayList;
 
 
+    public Post() {
+    }
 
-    public Post(String postString, String user, int id) {
+    public Post(String postString, String user, int postId) {
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         DateFormat df;
         df = DateFormat.getDateInstance(DateFormat.LONG);
-        dateString = df.format(date);
+        postDateString = df.format(date);
         commentArrayList =new ArrayList<Comment>();
 
         this.postString = postString;
         this.user = user;
-        this.id = id;
+        this.id = postId;
     }
 
     public void addComment(String commentString, String user){
@@ -37,8 +39,15 @@ public class Post {
 
     }
 
-    public Post() {
+    public String getEventDateString() {
+        return eventDateString;
     }
+
+    public void setEventDateString(String eventDateString) {
+        this.eventDateString = eventDateString;
+    }
+
+
 
     public String getPostString() {
         return postString;
@@ -48,6 +57,14 @@ public class Post {
         this.postString = postString;
     }
 
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
 
     public String getUser() {
         return user;
@@ -65,12 +82,12 @@ public class Post {
         this.location = location;
     }
 
-    public String getDateString() {
-        return dateString;
+    public String getPostDateString() {
+        return postDateString;
     }
 
-    public void setDateString(String dateString) {
-        this.dateString = dateString;
+    public void setPostDateString(String postDateString) {
+        this.postDateString = postDateString;
     }
 
     public int getId() {
