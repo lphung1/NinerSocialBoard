@@ -19,7 +19,7 @@
         <item
             android:id="@+id/official_events_menu"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Official Events" />
+            android:title="All Events" />
         <item
             android:id="@+id/saved_events_menu"
             android:icon="@drawable/ic_menu_slideshow"
