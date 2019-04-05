@@ -19,12 +19,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-<<<<<<< HEAD
     <style name = "MenuColor" parent ="Widget.AppCompat.DrawerArrowToggle">
         <item name ="color">@android:color/darker_gray</item>
     </style>
 
-=======
 
     <style name="TextAppearance.Title" parent="@android:style/TextAppearance">
         <item name="android:textSize">18sp</item>
@@ -80,7 +78,4 @@
         <item name="android:textColor">@color/primary_dark_text</item>
     </style>
 
-
-
->>>>>>> aba67efb4505106c811787c0b391a3439c39733e
 </resources>
