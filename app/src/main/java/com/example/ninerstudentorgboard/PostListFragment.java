@@ -2,6 +2,7 @@ package com.example.ninerstudentorgboard;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.ninerstudentorgboard.JavaClasses.LikeController;
 import com.example.ninerstudentorgboard.JavaClasses.Post;
 
 
@@ -21,7 +21,7 @@ import com.example.ninerstudentorgboard.JavaClasses.Post;
  */
 public class PostListFragment extends Fragment {
 
-    CustomAdapter adapter;
+    CustomAdapterPostList adapter;
 
     public void updateFragment1ListView(){
 
@@ -66,18 +66,29 @@ public class PostListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        adapter = new CustomAdapter(getActivity(), R.layout.post_item, MainActivity.postArrayList);
+        adapter = new CustomAdapterPostList(getActivity(), R.layout.post_item, MainActivity.postArrayList);
         View view = inflater.inflate(R.layout.content_main, container, false);
         ListView listView = view.findViewById(R.id.content_main_listview);
         // Set the adapter
         adapter.notifyDataSetChanged();
-
-
-
-
         listView.setAdapter(adapter);
 
+        if (container != null) {
+            container.removeAllViews();
+        }
 
+        //for if we want to use fragments for adding comments
+        ImageView comment = listView.findViewById(R.id.commentsCountImageView);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
+//
+//                getActivity().getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, postDetailsFragment).commit();
+//
+//                Log.d("Item pressed ", "From PostListFragment " + i);
+//            }
+//        });
 
 
         return view;
