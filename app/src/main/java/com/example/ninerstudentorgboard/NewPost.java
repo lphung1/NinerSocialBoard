@@ -31,6 +31,7 @@ public class NewPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_new_post);
         mDisplayDate = findViewById(R.id.selectDateTextView);
         submitButton = findViewById(R.id.submit_newPost);

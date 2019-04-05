@@ -24,7 +24,7 @@ public class NewCommentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_comment);
-
+        getSupportActionBar().hide();
         TextView postString = findViewById(R.id.detailsTextView);
         TextView eventNameTextView = findViewById(R.id.eventNameTextViewPostItem);
         TextView tagTV = findViewById(R.id.tagTextViewPostItem);
