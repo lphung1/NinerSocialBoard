@@ -33,8 +33,6 @@
         android:gravity="top"
         android:hint="Say something"
         android:padding="16dp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
         android:background="@drawable/rounded_posts"
         android:textAlignment="gravity"
         app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
