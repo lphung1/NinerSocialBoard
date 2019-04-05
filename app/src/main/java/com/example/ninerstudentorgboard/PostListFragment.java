@@ -5,8 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.ninerstudentorgboard.JavaClasses.LikeController;
 import com.example.ninerstudentorgboard.JavaClasses.Post;
 
 
@@ -57,6 +60,7 @@ public class PostListFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
     }
 
     @Override
@@ -68,7 +72,11 @@ public class PostListFragment extends Fragment {
         // Set the adapter
         adapter.notifyDataSetChanged();
 
+
+
+
         listView.setAdapter(adapter);
+
 
 
 

@@ -21,7 +21,12 @@
             android:title="Board Feed" />
         <item
             android:id="@+id/official_events_menu"
+
             android:title="Official Events" />
+
+            <item
+            android:title="All Events" />
+
         <item
             android:id="@+id/saved_events_menu"
             android:title="Saved Events" />

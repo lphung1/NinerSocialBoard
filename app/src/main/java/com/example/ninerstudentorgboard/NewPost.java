@@ -23,6 +23,10 @@ public class NewPost extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private Button submitButton;
+    private  TextView eventTitleTV;
+    private EditText eventTitleEditText;
+    private TextView tagEditText;
+    private boolean dateSet = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +34,31 @@ public class NewPost extends AppCompatActivity {
         setContentView(R.layout.activity_new_post);
         mDisplayDate = findViewById(R.id.selectDateTextView);
         submitButton = findViewById(R.id.submit_newPost);
+        tagEditText = findViewById(R.id.tagEditText_newPost);
+        eventTitleEditText = findViewById(R.id.postTitleEditText_newPost);
         final EditText postContent = findViewById(R.id.postEditText_newPost);
 
+        //submits entreis when submit button is pressed
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String text = postContent.getText().toString();
                 Log.d("Post Content", "" + text);
-                postArrayList.add(new Post(text, "User1", postArrayList.size()));
+                Post thisPost = new Post(text, "User1", postArrayList.size());
+
+                thisPost.setTag(tagEditText.getText().toString());
+                thisPost.setTitle(eventTitleEditText.getText().toString());
+                if(dateSet) {
+                    thisPost.setEventDateString(mDisplayDate.getText().toString());
+                }
+                postArrayList.add(thisPost);
                 Log.d("Arraylist size", "" + postArrayList.size());
                 finish();
             }
         });
 
+        //lets user select date
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +74,7 @@ public class NewPost extends AppCompatActivity {
                         year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
+                dateSet = true;
             }
         });
 

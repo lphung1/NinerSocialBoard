@@ -7,8 +7,8 @@ import java.util.Date;
 
 public class Post {
 
-    String postString, user, location, postDateString, eventDateString, tag;
-    int id;
+    String postString, user, location, postDateString, eventDateString, tag, title;
+    int id, commentCount, likesCount;
     ArrayList<Comment> commentArrayList;
 
 
@@ -19,10 +19,10 @@ public class Post {
         Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
         DateFormat df;
-        df = DateFormat.getDateInstance(DateFormat.LONG);
+        df = DateFormat.getDateInstance(DateFormat.FULL);
         postDateString = df.format(date);
         commentArrayList =new ArrayList<Comment>();
-
+        commentCount = likesCount = 0;
         this.postString = postString;
         this.user = user;
         this.id = postId;
@@ -30,6 +30,7 @@ public class Post {
 
     public void addComment(String commentString, String user){
         Comment c = new Comment(commentString, user, commentArrayList.size());
+        commentCount++;
         commentArrayList.add( c );
     }
 
@@ -48,6 +49,17 @@ public class Post {
     }
 
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void addLike(){
+        likesCount++;
+    }
 
     public String getPostString() {
         return postString;
@@ -98,12 +110,24 @@ public class Post {
         this.id = id;
     }
 
-    public int getNumComments(){
+    public int getCommentArrayListSize(){
 
         return commentArrayList.size();
-
     }
 
+    public int getCommentCount() {
+        return commentCount;
+    }
 
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
 }

@@ -21,7 +21,7 @@
         card_view:cardUseCompatPadding="true">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/relativeLayout2"
+            android:id="@+id/constraintlayout_postItem"
             android:layout_width="381dp"
             android:layout_height="wrap_content">
 
@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/nameTextViewPostItem"
+                android:id="@+id/eventNameTextViewPostItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -61,7 +61,7 @@
                 android:ellipsize="end"
                 android:paddingLeft="@dimen/intrinsic_padding"
                 android:paddingRight="@dimen/intrinsic_padding"
-                android:textAppearance="@style/TextAppearance.Title"
+                android:textAppearance="@style/TextAppearance.Second"
                 app:layout_constraintBottom_toTopOf="@+id/detailsTextView"
                 card_view:layout_constraintStart_toEndOf="@+id/authorImageView"
                 card_view:layout_constraintTop_toTopOf="parent" />
