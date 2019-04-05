@@ -1,10 +1,11 @@
 package com.example.ninerstudentorgboard.JavaClasses;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Comment {
+public class Comment implements Serializable {
 
     String commentString, user, dateString;
     int commentId;

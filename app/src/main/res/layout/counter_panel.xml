@@ -18,8 +18,8 @@
         <ImageView
             android:id="@+id/likesImageView"
             app:srcCompat="@drawable/ic_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/likeCounterTextView"
@@ -42,8 +42,8 @@
         <ImageView
             android:id="@+id/commentsCountImageView"
             app:srcCompat="@drawable/ic_comments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/commentsCountTextView"

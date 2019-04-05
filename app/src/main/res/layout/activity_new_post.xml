@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="16dp"
         android:text="New Post"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,27 +28,18 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:gravity="top"
         android:hint="Say something"
         android:padding="16dp"
-        android:textAlignment="gravity"
         android:background="@drawable/rounded_posts"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        android:textAlignment="gravity"
+        app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postTitleEditText_newPost" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Tag"
-        app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tagEditText_newPost"
@@ -57,8 +48,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-        android:ems="10"
         android:background="@drawable/rounded_posts"
+        android:ems="10"
         android:hint="Enter a tag as #OrgName"
         android:inputType="textPersonName"
         android:padding="16dp"
@@ -71,14 +62,15 @@
     <TextView
         android:id="@+id/selectDateTextView"
         android:layout_width="0dp"
+        android:background="@drawable/rounded_posts"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="Select the event date"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -86,17 +78,18 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="0dp"
+        android:background="@drawable/rounded_posts"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:hint="Event time (Optional)"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="30sp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/cancel_button_newpost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectDateTextView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/cancel_button_newpost"
@@ -104,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="17dp"
-        android:text="Button"
+        android:text="Cancel"
         android:background="@color/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -115,20 +108,24 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="17dp"
-        android:text="Button"
+        android:text="Submit"
         android:background="@color/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/postTitleEditText_newPost"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_posts"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Event Title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
