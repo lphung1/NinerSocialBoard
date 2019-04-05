@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity
         public static ArrayList<Post> postArrayList = new ArrayList<Post>();
         PostListFragment postListFragment = new PostListFragment();
         StudentOrgListFragment studentOrgListFragment = new StudentOrgListFragment();
-
+        PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
+        populateSampleData();
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgListFragment);
 
@@ -154,6 +156,44 @@ public class MainActivity extends AppCompatActivity
 
 
 
+    public void openFragmentDetailPostItem(Post p){
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_main, postDetailsFragment).commit();
+    }
+
+
+    void populateSampleData(){
+
+        Post p1 = new Post("Our club is meeting tonight at 7 for a pizza party, please stop by!", "User1", postArrayList.size());
+        p1.setTitle("Pizza party");
+        p1.setTag("#RandomClub");
+        p1.setLikesCount(5);
+        p1.addComment("I'll be there", "User2");
+        postArrayList.add(p1);
+
+        Post p2 = new Post("App ventures is having a meeting tomorrow, feel free to stop by.", "User4", postArrayList.size());
+        p2.setTitle("Club Meeting");
+        p2.setTag("#App Ventures");
+        p2.setLikesCount(9);
+        p2.addComment("I'll be there", "User4");
+        postArrayList.add(p2);
+
+        Post p3 = new Post("We're having a super smash bros ultimate tournament tomorrow at SAC, come to win a free switch", "User2", postArrayList.size());
+        p3.setTitle("Smash Tournament");
+        p3.setTag("#SmashUltimate, #GameClub");
+        p3.setLikesCount(1);
+        p3.addComment("You're gonna get wrecked", "Scrub1");
+        p3.addComment("Who wanna get these hands", "FearlessJoe");
+        postArrayList.add(p3);
+
+        Post p4 = new Post("Anyone want to get together to study for the physics test today", "User2", postArrayList.size());
+        p4.setTitle("Physics Test");
+        p4.setTag("#PhysicsTest1201");
+        p4.setLikesCount(3);
+        p4.addComment("I'm struggling too", "User2");
+        postArrayList.add(p4);
+
+
+    }
 
 
 }//end mainActivity class
