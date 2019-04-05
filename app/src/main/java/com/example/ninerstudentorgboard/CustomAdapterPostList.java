@@ -4,6 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.animation.BounceInterpolator;
 import android.widget.ArrayAdapter;
 import android.content.Context;
@@ -23,11 +27,17 @@ import java.util.ArrayList;
 
 import static android.view.FrameMetrics.ANIMATION_DURATION;
 
-public class CustomAdapter extends ArrayAdapter<Post> {
 
-    public CustomAdapter(@NonNull Context context, int resource, ArrayList<Post> objects) {
+public class CustomAdapterPostList extends ArrayAdapter<Post> {
+
+    private Activity m_activity;
+
+
+
+    public CustomAdapterPostList(@NonNull Context context, int resource, ArrayList<Post> objects) {
         super(context, resource, objects);
     }
+
 
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
@@ -42,6 +52,39 @@ public class CustomAdapter extends ArrayAdapter<Post> {
         final TextView likesCount = convertView.findViewById(R.id.likeCounterTextView);
         TextView commentCount = convertView.findViewById(R.id.commentsCountTextView);
         TextView postCreateDateTV = convertView.findViewById(R.id.dateTextView);
+        final ImageView commentIV = convertView.findViewById(R.id.commentsCountImageView);
+
+        //set comment button as listener
+        commentIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Item post clicked", "From customadapter Item " + post.getPostString());
+                PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
+                Context c = getContext();
+
+                //getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, postDetailsFragment).commit();
+
+                Intent i = new Intent(c, NewCommentActivity.class);
+                i.putExtra("POST", post);
+                c.startActivity(i);
+            }
+        });
+        //set comment count as button as well for easy press
+        commentCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Item post clicked", "From customadapter Item " + post.getPostString());
+                PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
+                Context c = getContext();
+
+                //getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, postDetailsFragment).commit();
+
+                Intent i = new Intent(c, NewCommentActivity.class);
+                i.putExtra("POST", post);
+                c.startActivity(i);
+            }
+        });
+
 
         postString.setText(post.getPostString());
 
@@ -53,7 +96,7 @@ public class CustomAdapter extends ArrayAdapter<Post> {
         tagTV.setText(post.getTag());
 
 
-            //set as the tag the position parameter
+            //set as the tag the position parameter and add like functionality
             heart.setTag(new Integer(position));
             heart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,8 +129,11 @@ public class CustomAdapter extends ArrayAdapter<Post> {
                     animatorSet.start();
 
 
+
                 }
             });
+
+
 
 
         return convertView;

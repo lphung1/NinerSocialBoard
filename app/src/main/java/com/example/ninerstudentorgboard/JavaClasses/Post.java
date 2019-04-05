@@ -1,11 +1,12 @@
 package com.example.ninerstudentorgboard.JavaClasses;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Post {
+public class Post implements Serializable {
 
     String postString, user, location, postDateString, eventDateString, tag, title;
     int id, commentCount, likesCount;
@@ -113,6 +114,10 @@ public class Post {
     public int getCommentArrayListSize(){
 
         return commentArrayList.size();
+    }
+
+    public ArrayList<Comment> getCommentArrayList() {
+        return commentArrayList;
     }
 
     public int getCommentCount() {
