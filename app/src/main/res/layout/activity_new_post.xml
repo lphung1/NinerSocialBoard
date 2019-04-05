@@ -76,6 +76,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="228dp"
         android:hint="Select the event date"
+        android:background="@drawable/rounded_posts"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -91,6 +92,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="15dp"
         android:hint="Event time (Optional)"
+        android:background="@drawable/rounded_posts"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,6 +131,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Event Title"
+        android:background="@drawable/rounded_posts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
