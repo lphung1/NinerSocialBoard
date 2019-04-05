@@ -129,7 +129,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Event Title"
-        android:background="@drawable/rounded_posts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
