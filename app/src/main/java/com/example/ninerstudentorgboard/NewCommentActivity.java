@@ -34,6 +34,7 @@ public class NewCommentActivity extends AppCompatActivity {
         TextView postCreateDateTV = findViewById(R.id.dateTextView);
 
 
+
         if(getIntent() != null && getIntent().getExtras() != null){
             final Post post = (Post) getIntent().getExtras().getSerializable("POST");
 
