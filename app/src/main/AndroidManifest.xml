@@ -15,8 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewPost"></activity>
-        <activity android:name=".StudentOrgList" />
+        <activity android:name=".NewCommentActivity"></activity>
+        <activity android:name=".NewPost" />
+        <activity android:name=".StudentOrgListFragment" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".MainActivity"

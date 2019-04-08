@@ -8,6 +8,14 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="742dp"
+        android:background="@drawable/side_nav_bar"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container_main"></LinearLayout>
+
     <ListView
         android:id="@+id/content_main_listview"
         android:layout_width="match_parent"
@@ -21,6 +29,7 @@
         android:id="@+id/fragment_container_main">
 
     </FrameLayout>
+
 
 
 </android.support.constraint.ConstraintLayout>
