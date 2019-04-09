@@ -8,14 +8,14 @@
 
     <EditText
         android:id="@+id/AddCommentEditText"
-        android:layout_width="344dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Add a Comment"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/addCommentImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
