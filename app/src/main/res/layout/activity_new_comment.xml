@@ -7,11 +7,10 @@
     tools:context=".NewCommentActivity">
 
 
-
     <include
         android:id="@+id/postDetailsContainer"
         layout="@layout/post_item"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -42,7 +41,7 @@
     <include
         android:id="@+id/addCommentContainer_newCommentActivity"
         layout="@layout/add_comment_bar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
