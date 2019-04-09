@@ -54,9 +54,10 @@ public class NewCommentActivity extends AppCompatActivity {
             }
 
 
-            final ArrayAdapter<String> basicCommentAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, commentStringList);
+            final CustomAdapterCommentList adapter = new CustomAdapterCommentList(NewCommentActivity.this, R.layout.comment_item, post.getCommentArrayList());
+
             ListView listView = findViewById(R.id.commentListView_newCommentActivity);
-            listView.setAdapter(basicCommentAdapter);
+            listView.setAdapter(adapter);
 
             ImageView addCommentButton = findViewById(R.id.addCommentImageView);
             final EditText commentEditText = findViewById(R.id.AddCommentEditText);
@@ -68,7 +69,7 @@ public class NewCommentActivity extends AppCompatActivity {
                     Log.d("New Comment Activity", "Add comment button pressed");
                     MainActivity.postArrayList.get(post.getId()).addComment(commentEditText.getText().toString(), "Me");
                     commentStringList.add(commentEditText.getText().toString());
-                    basicCommentAdapter.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                     commentEditText.setText("");
                     commentCount.setText(Integer.toString(MainActivity.postArrayList.get(post.getId()).getCommentCount()));
 
