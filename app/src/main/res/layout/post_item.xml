@@ -22,7 +22,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraintlayout_postItem"
-            android:layout_width="381dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
@@ -50,6 +50,7 @@
                 app:layout_constraintStart_toEndOf="@+id/authorImageView"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/tagTextViewPostItem"
                 android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
 
             <TextView
                 android:id="@+id/detailsTextView"
-                android:layout_width="342dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
@@ -100,3 +101,4 @@
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
+

@@ -3,26 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+
+
+
+
     <item android:title="STUDENT">
+
 
     </item>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/org_list"
-            android:icon="@drawable/ic_menu_gallery"
             android:title="Organization List" />
         <item
             android:id="@+id/board_feed_menu"
-            android:icon="@drawable/ic_menu_gallery"
             android:title="Board Feed" />
         <item
             android:id="@+id/official_events_menu"
-            android:icon="@drawable/ic_menu_slideshow"
+
+            android:title="Official Events" />
+
+            <item
             android:title="All Events" />
+
         <item
             android:id="@+id/saved_events_menu"
-            android:icon="@drawable/ic_menu_slideshow"
             android:title="Saved Events" />
     </group>
 
@@ -32,11 +38,17 @@
                 android:id="@+id/settings_menu"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Settings" />
+
+            <item
+                android:id="@+id/about_us_menu"
+                android:title="About Us"></item>
             <item
                 android:id="@+id/log_out_menu"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Log Out" />
         </menu>
     </item>
+
+
 
 </menu>
