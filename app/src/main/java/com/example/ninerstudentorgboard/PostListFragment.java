@@ -12,6 +12,9 @@ import android.widget.ListView;
 
 import com.example.ninerstudentorgboard.JavaClasses.Post;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 /**
  * A fragment representing a list of Items.
@@ -23,7 +26,9 @@ public class PostListFragment extends Fragment {
 
     CustomAdapterPostList adapter;
 
-    public void updateFragment1ListView(){
+
+
+    public void updateFragmentListView(){
 
         adapter.notifyDataSetChanged();
 
@@ -66,11 +71,12 @@ public class PostListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         adapter = new CustomAdapterPostList(getActivity(), R.layout.post_item, MainActivity.postArrayList);
         View view = inflater.inflate(R.layout.content_main, container, false);
         ListView listView = view.findViewById(R.id.content_main_listview);
         // Set the adapter
-        adapter.notifyDataSetChanged();
+
         listView.setAdapter(adapter);
 
         if (container != null) {
@@ -89,6 +95,8 @@ public class PostListFragment extends Fragment {
 //                Log.d("Item pressed ", "From PostListFragment " + i);
 //            }
 //        });
+
+
 
 
         return view;

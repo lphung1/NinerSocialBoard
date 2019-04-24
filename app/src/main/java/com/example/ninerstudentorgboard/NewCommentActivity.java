@@ -16,7 +16,10 @@ import android.widget.TextView;
 import com.example.ninerstudentorgboard.JavaClasses.Comment;
 import com.example.ninerstudentorgboard.JavaClasses.Post;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class NewCommentActivity extends AppCompatActivity {
 
@@ -35,8 +38,10 @@ public class NewCommentActivity extends AppCompatActivity {
 
 
         if(getIntent() != null && getIntent().getExtras() != null){
-            final Post post = (Post) getIntent().getExtras().getSerializable("POST");
 
+
+            final int position = getIntent().getExtras().getInt("POST_POSITION");
+            final Post post = MainActivity.postArrayList.get(position);
 
             postString.setText(post.getPostString());
 
@@ -67,14 +72,57 @@ public class NewCommentActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Log.d("New Comment Activity", "Add comment button pressed");
-                    MainActivity.postArrayList.get(post.getId()).addComment(commentEditText.getText().toString(), "Me");
-                    commentStringList.add(commentEditText.getText().toString());
-                    adapter.notifyDataSetChanged();
-                    commentEditText.setText("");
-                    commentCount.setText(Integer.toString(MainActivity.postArrayList.get(post.getId()).getCommentCount()));
+
+                        Log.d("New Comment Activity", commentEditText.getText().toString());
+                        MainActivity.postArrayList.get(position).addComment(commentEditText.getText().toString(), "Me");
+                        Log.d("NewComAct-CommentCount", " " + MainActivity.postArrayList.get(position).getCommentArrayListSize());
+                        commentStringList.add(commentEditText.getText().toString());
+                        commentEditText.setText("");
+                        commentCount.setText(Integer.toString(MainActivity.postArrayList.get(position).getCommentCount()));
+                        adapter.notifyDataSetChanged();
+
+
 
                 }
             });
+
+            listView.setAdapter(adapter);
+
+            /*
+        Calculate how long ago post was made
+        sets the time difference for the posts
+         */
+            Calendar cal = Calendar.getInstance();
+
+            DateFormat fm = DateFormat.getDateInstance(DateFormat.FULL);
+            Date currentTimeStamp = cal.getTime();
+            Date postTimeStamp = post.getTimestamp();
+            fm.format(currentTimeStamp);
+            fm.format(postTimeStamp);
+            int secondsInMil = 1000;
+            int minInMil = 60000;
+            int hourInMil = minInMil * 60;
+            int dayInMil = hourInMil * 24;
+
+            long timeDifference = currentTimeStamp.getTime() - postTimeStamp.getTime();
+            // if less than 60 seconds have passed, display seconds ago
+            if( timeDifference < minInMil ) {
+                long d = ((currentTimeStamp.getTime() - postTimeStamp.getTime()) / secondsInMil);
+                postCreateDateTV.setText(post.getPostDateString() + "\n" + d + "s ago");
+            }
+            //if more than 60 seconds have past, display minutes ago
+            else if(timeDifference < hourInMil ){
+                long d = ((currentTimeStamp.getTime() - postTimeStamp.getTime()) / minInMil );
+                postCreateDateTV.setText(post.getPostDateString() + "\n" + d + " minutes ago");
+            }
+            else if(timeDifference < dayInMil){
+                long d = ((currentTimeStamp.getTime() - postTimeStamp.getTime()) / hourInMil );
+                postCreateDateTV.setText(post.getPostDateString() + "\n" + d + " hours ago");
+            }
+            else if (timeDifference > dayInMil ){
+                long d = ((currentTimeStamp.getTime() - postTimeStamp.getTime()) / dayInMil );
+                postCreateDateTV.setText(post.getPostDateString() + "\n" + d + " days ago");
+            }
         }
 
 

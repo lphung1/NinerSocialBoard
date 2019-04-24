@@ -32,11 +32,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
 
 
 
-        populateSampleData();
+        if(postArrayList.isEmpty()) {
+            populateSampleData();
+        }
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgListFragment);
 
@@ -48,8 +51,6 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
                 Intent i = new Intent(MainActivity.this, NewPost.class);
                 startActivity(i);
@@ -74,14 +75,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        postListFragment.updateFragment1ListView();
+        postListFragment.updateFragmentListView();
         Log.d("On Resume Called", "Main Activity");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //postListFragment.updateFragment1ListView();
+        postListFragment.updateFragmentListView();
         Log.d("On Start Called", "Main Activity");
     }
 
@@ -168,14 +169,14 @@ public class MainActivity extends AppCompatActivity
         p1.setTag("#RandomClub");
         p1.setLikesCount(5);
         p1.addComment("I'll be there", "User2");
-        postArrayList.add(p1);
+        postArrayList.add(0,p1);
 
         Post p2 = new Post("App ventures is having a meeting tomorrow, feel free to stop by.", "User4", postArrayList.size());
         p2.setTitle("Club Meeting");
         p2.setTag("#App Ventures");
         p2.setLikesCount(9);
         p2.addComment("I'll be there", "User4");
-        postArrayList.add(p2);
+        postArrayList.add(0, p2);
 
         Post p3 = new Post("We're having a super smash bros ultimate tournament tomorrow at SAC, come to win a free switch", "User2", postArrayList.size());
         p3.setTitle("Smash Tournament");
@@ -183,15 +184,14 @@ public class MainActivity extends AppCompatActivity
         p3.setLikesCount(1);
         p3.addComment("You're gonna get wrecked", "Scrub1");
         p3.addComment("Who wanna get these hands", "FearlessJoe");
-        postArrayList.add(p3);
+        postArrayList.add(0,p3);
 
         Post p4 = new Post("Anyone want to get together to study for the physics test today", "User2", postArrayList.size());
         p4.setTitle("Physics Test");
         p4.setTag("#PhysicsTest1201");
         p4.setLikesCount(3);
         p4.addComment("I'm struggling too", "User2");
-        postArrayList.add(p4);
-
+        postArrayList.add(0,p4);
 
     }
 
