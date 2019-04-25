@@ -11,17 +11,20 @@ public class Post implements Serializable {
     String postString, user, location, postDateString, eventDateString, tag, title;
     int id, commentCount, likesCount;
     ArrayList<Comment> commentArrayList;
+
     User username; //Stores reference to user that created the post.
+    Date timestamp;
 
     public Post() {
     }
 
     public Post(String postString, String user, int postId) {
+
         Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        DateFormat df;
-        df = DateFormat.getDateInstance(DateFormat.FULL);
-        postDateString = df.format(date);
+        timestamp = cal.getTime();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+        postDateString = df.format(timestamp);
+
         commentArrayList =new ArrayList<Comment>();
         commentCount = likesCount = 0;
         this.postString = postString;
@@ -41,6 +44,10 @@ public class Post implements Serializable {
 
     }
 
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
     public String getEventDateString() {
         return eventDateString;
     }
@@ -49,6 +56,9 @@ public class Post implements Serializable {
         this.eventDateString = eventDateString;
     }
 
+    public void setTimestamp(Date d){
+        timestamp = d;
+    }
 
     public String getTitle() {
         return title;

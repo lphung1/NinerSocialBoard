@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import com.example.ninerstudentorgboard.PostListFragment;
+import com.example.ninerstudentorgboard.MainActivity;
 import com.example.ninerstudentorgboard.JavaClasses.Post;
 
 import java.util.Calendar;
@@ -53,8 +54,9 @@ public class NewPost extends AppCompatActivity {
                 if(dateSet) {
                     thisPost.setEventDateString(mDisplayDate.getText().toString());
                 }
-                postArrayList.add(thisPost);
-                Log.d("Arraylist size", "" + postArrayList.size());
+                MainActivity.postArrayList.add(0,thisPost);
+                Log.d("Arraylist size", "" + MainActivity.postArrayList.size());
+
                 finish();
             }
         });

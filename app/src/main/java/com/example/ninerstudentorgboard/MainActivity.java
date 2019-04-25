@@ -1,9 +1,13 @@
 package com.example.ninerstudentorgboard;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -26,15 +30,18 @@ public class MainActivity extends AppCompatActivity
         PostListFragment postListFragment = new PostListFragment();
         StudentOrgListFragment studentOrgListFragment = new StudentOrgListFragment();
         PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
-
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        populateSampleData();
+        if(postArrayList.isEmpty()) {
+            populateSampleData();
+        }
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgListFragment);
 
@@ -46,8 +53,6 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
                 Intent i = new Intent(MainActivity.this, NewPost.class);
                 startActivity(i);
@@ -72,14 +77,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        postListFragment.updateFragment1ListView();
+        postListFragment.updateFragmentListView();
         Log.d("On Resume Called", "Main Activity");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        //postListFragment.updateFragment1ListView();
+        postListFragment.updateFragmentListView();
         Log.d("On Start Called", "Main Activity");
     }
 
@@ -93,12 +98,64 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //code for search menu currently WIP
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        final ArrayList<Post> searchArrayList = new ArrayList<Post>();
+
+        SearchManager sm = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(sm.getSearchableInfo(this.getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                String input = s.toLowerCase();
+                for(int i = 0; postArrayList.size() > i; i++){
+                    if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
+                        searchArrayList.add(postArrayList.get(i));
+                    }
+                }
+
+
+                postListFragment.adapter.setFilter(searchArrayList);
+
+
+                Log.d("OnQueryTextListener", "String " + s);
+                Log.d("OnQueryTextListener", "postArrayList  " + postArrayList.size());
+                Log.d("OnQueryTextListener", "mresultlist  " + postListFragment.adapter.getmResultListSize());
+                return true;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                String input = s.toLowerCase();
+//                for(int i = 0; postArrayList.size() > i; i++){
+//                    if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
+//                        searchArrayList.add(postArrayList.get(i));
+//                    }
+//                }
+//
+//
+//                postListFragment.adapter.setFilter(searchArrayList);
+
+
+                Log.d("OnQueryTextListener", "String " + s);
+                Log.d("OnQueryTextListener", "postArrayList  " + postArrayList.size());
+                Log.d("OnQueryTextListener", "mresultlist  " + postListFragment.adapter.getmResultListSize());
+                return true;
+            }
+        });
+
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -108,12 +165,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
 
+
+
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -166,14 +227,14 @@ public class MainActivity extends AppCompatActivity
         p1.setTag("#RandomClub");
         p1.setLikesCount(5);
         p1.addComment("I'll be there", "User2");
-        postArrayList.add(p1);
+        postArrayList.add(0,p1);
 
         Post p2 = new Post("App ventures is having a meeting tomorrow, feel free to stop by.", "User4", postArrayList.size());
         p2.setTitle("Club Meeting");
         p2.setTag("#App Ventures");
         p2.setLikesCount(9);
         p2.addComment("I'll be there", "User4");
-        postArrayList.add(p2);
+        postArrayList.add(0, p2);
 
         Post p3 = new Post("We're having a super smash bros ultimate tournament tomorrow at SAC, come to win a free switch", "User2", postArrayList.size());
         p3.setTitle("Smash Tournament");
@@ -181,16 +242,19 @@ public class MainActivity extends AppCompatActivity
         p3.setLikesCount(1);
         p3.addComment("You're gonna get wrecked", "Scrub1");
         p3.addComment("Who wanna get these hands", "FearlessJoe");
-        postArrayList.add(p3);
+        postArrayList.add(0,p3);
 
         Post p4 = new Post("Anyone want to get together to study for the physics test today", "User2", postArrayList.size());
         p4.setTitle("Physics Test");
         p4.setTag("#PhysicsTest1201");
         p4.setLikesCount(3);
         p4.addComment("I'm struggling too", "User2");
-        postArrayList.add(p4);
+        postArrayList.add(0,p4);
 
+    }
 
+    public  ArrayList<Post> getPostListArray(){
+        return postArrayList;
     }
 
 

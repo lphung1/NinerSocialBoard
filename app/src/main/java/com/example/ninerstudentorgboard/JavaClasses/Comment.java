@@ -9,14 +9,15 @@ public class Comment implements Serializable {
 
     String commentString, user, dateString;
     int commentId;
+    Date timestamp;
 
     public Comment(String commentString, String user, int comID) {
 
         Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
+        timestamp = cal.getTime();
         DateFormat df;
         df = DateFormat.getDateInstance(DateFormat.LONG);
-        dateString = df.format(date);
+        dateString = df.format(timestamp);
 
         this.commentString = commentString;
         this.user = user;
@@ -24,6 +25,14 @@ public class Comment implements Serializable {
     }
 
     public Comment() {
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getCommentString() {
