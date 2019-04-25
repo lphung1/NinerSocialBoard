@@ -1,9 +1,13 @@
 package com.example.ninerstudentorgboard;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -26,16 +30,16 @@ public class MainActivity extends AppCompatActivity
         PostListFragment postListFragment = new PostListFragment();
         StudentOrgListFragment studentOrgListFragment = new StudentOrgListFragment();
         PostDetailsFragment postDetailsFragment = new PostDetailsFragment();
-
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(" ");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
+        postDetailsFragment.setHasOptionsMenu(true);
 
         if(postArrayList.isEmpty()) {
             populateSampleData();
@@ -96,12 +100,64 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //code for search menu currently WIP
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        final ArrayList<Post> searchArrayList = new ArrayList<Post>();
+
+        SearchManager sm = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
+        searchView.setSearchableInfo(sm.getSearchableInfo(this.getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                String input = s.toLowerCase();
+                for(int i = 0; postArrayList.size() > i; i++){
+                    if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
+                        searchArrayList.add(postArrayList.get(i));
+                    }
+                }
+
+
+                postListFragment.adapter.setFilter(searchArrayList);
+
+
+                Log.d("OnQueryTextListener", "String " + s);
+                Log.d("OnQueryTextListener", "postArrayList  " + postArrayList.size());
+                Log.d("OnQueryTextListener", "mresultlist  " + postListFragment.adapter.getmResultListSize());
+                return true;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                String input = s.toLowerCase();
+//                for(int i = 0; postArrayList.size() > i; i++){
+//                    if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
+//                        searchArrayList.add(postArrayList.get(i));
+//                    }
+//                }
+//
+//
+//                postListFragment.adapter.setFilter(searchArrayList);
+
+
+                Log.d("OnQueryTextListener", "String " + s);
+                Log.d("OnQueryTextListener", "postArrayList  " + postArrayList.size());
+                Log.d("OnQueryTextListener", "mresultlist  " + postListFragment.adapter.getmResultListSize());
+                return true;
+            }
+        });
+
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -111,12 +167,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
 
+
+
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -193,6 +253,10 @@ public class MainActivity extends AppCompatActivity
         p4.addComment("I'm struggling too", "User2");
         postArrayList.add(0,p4);
 
+    }
+
+    public  ArrayList<Post> getPostListArray(){
+        return postArrayList;
     }
 
 

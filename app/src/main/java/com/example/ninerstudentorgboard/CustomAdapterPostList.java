@@ -7,7 +7,11 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.animation.BounceInterpolator;
 import android.widget.ArrayAdapter;
 import android.content.Context;
@@ -30,23 +34,26 @@ import java.util.Calendar;
 import java.util.Date;
 
 import static android.view.FrameMetrics.ANIMATION_DURATION;
+import static com.example.ninerstudentorgboard.MainActivity.postArrayList;
 
 
 public class CustomAdapterPostList extends ArrayAdapter<Post> {
 
     private Activity m_activity;
-
+    private ArrayList<Post>  mResultList = new ArrayList<Post>();
 
 
     public CustomAdapterPostList(@NonNull Context context, int resource, ArrayList<Post> objects) {
         super(context, resource, objects);
+        mResultList = objects;
     }
 
 
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
 
-        final Post post = this.getItem(position);
+        final Post post = mResultList.get(position);
+
 
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.post_item, parent, false);
         TextView postString = convertView.findViewById(R.id.detailsTextView);
@@ -89,6 +96,9 @@ public class CustomAdapterPostList extends ArrayAdapter<Post> {
                 c.startActivity(i);
             }
         });
+
+
+
 
 
         postString.setText(post.getPostString());
@@ -179,8 +189,23 @@ public class CustomAdapterPostList extends ArrayAdapter<Post> {
 
 
 
+
         return convertView;
 
     }
+
+
+
+    public void setFilter(ArrayList<Post> model) {
+        mResultList.clear();
+        mResultList.addAll(model);
+        notifyDataSetChanged();
+    }
+
+    public int getmResultListSize(){
+        return mResultList.size();
+    }
+
+
 
 }
