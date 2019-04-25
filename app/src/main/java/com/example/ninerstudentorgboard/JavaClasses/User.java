@@ -3,22 +3,31 @@ package com.example.ninerstudentorgboard.JavaClasses;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Holds data for a User
+ */
 public class User implements Serializable {
 
         //User class attributes
         String username, userEmail;
-        int userID, postCount;
+        int userID, postCount, commentCount;
         ArrayList<Post> mypostArrayList;
         ArrayList<Post> likePostArrayList;
 
-        //Constructor
+    /**
+     * Constructor for User Class
+     * @param username
+     * @param userEmail
+     * @param userID
+     */
         public User(String username, String userEmail, int userID){
             this.username = username;
             this.userEmail = userEmail;
             this.userID = userID;
             postCount = 0;
             commentCount = 0;
-            postArrayList = new ArrayList<Post>();
+            mypostArrayList = new ArrayList<Post>();
+            likePostArrayList = new ArrayList<Post>();
         }
 
         //Getters and Setters

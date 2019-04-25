@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
         populateSampleData();
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_main, studentOrgListFragment);

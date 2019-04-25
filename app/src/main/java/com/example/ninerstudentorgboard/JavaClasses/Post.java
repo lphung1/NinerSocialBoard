@@ -11,7 +11,7 @@ public class Post implements Serializable {
     String postString, user, location, postDateString, eventDateString, tag, title;
     int id, commentCount, likesCount;
     ArrayList<Comment> commentArrayList;
-
+    User username; //Stores reference to user that created the post.
 
     public Post() {
     }
