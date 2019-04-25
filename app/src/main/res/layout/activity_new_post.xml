@@ -8,26 +8,45 @@
     tools:context=".NewPost">
 
 
+    <Button
+        android:id="@+id/UploadImage_button_newpost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/gold_button_shape"
+        android:text="Upload Image"
+        android:textAppearance="@style/TextAppearance.Title.White"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/submit_newPost"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button_newpost"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.757" />
+
     <EditText
         android:id="@+id/postEditText_newPost"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="174dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_posts"
         android:ems="10"
         android:gravity="top"
         android:hint="Say something"
-        android:textAppearance="@style/TextAppearance.Title"
         android:padding="16dp"
-        android:background="@drawable/rounded_posts"
         android:textAlignment="gravity"
+        android:textAppearance="@style/TextAppearance.Title"
         app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postTitleEditText_newPost" />
+        app:layout_constraintTop_toBottomOf="@+id/postTitleEditText_newPost"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/tagEditText_newPost"
@@ -90,14 +109,13 @@
         android:id="@+id/cancel_button_newpost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="17dp"
         android:layout_marginBottom="17dp"
-        android:text="Cancel"
         android:background="@drawable/gold_button_shape"
+        android:text="Cancel"
         android:textAppearance="@style/TextAppearance.Title.White"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/submit_newPost"
@@ -127,5 +145,21 @@
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewUploadPost"
+        android:layout_width="0dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postEditText_newPost"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/add_photo" />
 
 </android.support.constraint.ConstraintLayout>
