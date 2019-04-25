@@ -34,6 +34,7 @@ public class Post implements Serializable {
         this.postString = postString;
         this.user = user;
         this.id = postId;
+        this.storedImage = null;
     }
 
     public Post(String postString, String user, int postId, @Nullable Uri imageData) {
@@ -164,4 +165,9 @@ public class Post implements Serializable {
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
     }
+
+    public Uri getStoredImage(){
+        return storedImage;
+    }
 }
+

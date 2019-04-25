@@ -37,7 +37,7 @@ public class NewPost extends AppCompatActivity {
     // Image data
     private ImageView imageUpload;
     private Button imageUploadButton;
-    private Uri imageData;
+    private Uri imageData = null;
     private static final int RESULT_LOAD_IMAGE = 1;
 
     @Override

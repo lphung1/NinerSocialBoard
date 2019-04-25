@@ -64,6 +64,7 @@ public class CustomAdapterPostList extends ArrayAdapter<Post> {
         TextView commentCount = convertView.findViewById(R.id.commentsCountTextView);
         TextView postCreateDateTV = convertView.findViewById(R.id.dateTextView);
         final ImageView commentIV = convertView.findViewById(R.id.commentsCountImageView);
+        final ImageView postImage = convertView.findViewById(R.id.imageView_Stored_Image_Post);
 
         //set comment button as listener
         commentIV.setOnClickListener(new View.OnClickListener() {
@@ -98,13 +99,14 @@ public class CustomAdapterPostList extends ArrayAdapter<Post> {
         });
 
 
-
-
-
+        //Set Text Views etc
         postString.setText(post.getPostString());
-
         commentCount.setText(Integer.toString(post.getCommentCount()));
         eventNameTextView.setText(post.getTitle());
+
+        //Set ImageView for post image
+        postImage.setImageURI(post.getStoredImage());
+
         /*
         Calculate how long ago post was made
         sets the time difference for the posts
