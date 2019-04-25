@@ -85,7 +85,7 @@
             <include
                 android:id="@+id/countersContainer"
                 layout="@layout/counter_panel"
-                android:layout_width="264dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
