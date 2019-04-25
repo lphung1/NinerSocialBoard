@@ -35,6 +35,7 @@ public class NewCommentActivity extends AppCompatActivity {
         final TextView likesCount = findViewById(R.id.likeCounterTextView);
         final TextView commentCount = findViewById(R.id.commentsCountTextView);
         TextView postCreateDateTV = findViewById(R.id.dateTextView);
+        final ImageView postImage = findViewById(R.id.imageView_Stored_Image_Post);
 
 
         if(getIntent() != null && getIntent().getExtras() != null){
@@ -48,6 +49,9 @@ public class NewCommentActivity extends AppCompatActivity {
             commentCount.setText(Integer.toString(post.getCommentCount()));
             eventNameTextView.setText(post.getTitle());
             postCreateDateTV.setText(post.getPostDateString());
+
+            //set image
+            postImage.setImageURI(post.getStoredImage());
 
             likesCount.setText(Integer.toString(post.getLikesCount()));
             tagTV.setText(post.getTag());
