@@ -33,6 +33,7 @@ public class User implements Serializable {
         }
 
         //Getters and Setters
+
     public String getUsername() {
         return username;
     }
