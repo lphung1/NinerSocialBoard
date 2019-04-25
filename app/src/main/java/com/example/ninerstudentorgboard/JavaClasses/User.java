@@ -14,6 +14,8 @@ public class User implements Serializable {
         ArrayList<Post> mypostArrayList;
         ArrayList<Post> likePostArrayList;
 
+        //Store image as profile picture
+
     /**
      * Constructor for User Class
      * @param username
