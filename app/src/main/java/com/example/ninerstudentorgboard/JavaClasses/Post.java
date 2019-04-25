@@ -1,5 +1,8 @@
 package com.example.ninerstudentorgboard.JavaClasses;
 
+import android.net.Uri;
+import android.support.annotation.Nullable;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -11,6 +14,7 @@ public class Post implements Serializable {
     String postString, user, location, postDateString, eventDateString, tag, title;
     int id, commentCount, likesCount;
     ArrayList<Comment> commentArrayList;
+    Uri storedImage;
 
     User username; //Stores reference to user that created the post.
     Date timestamp;
@@ -30,6 +34,21 @@ public class Post implements Serializable {
         this.postString = postString;
         this.user = user;
         this.id = postId;
+    }
+
+    public Post(String postString, String user, int postId, @Nullable Uri imageData) {
+
+        Calendar cal = Calendar.getInstance();
+        timestamp = cal.getTime();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+        postDateString = df.format(timestamp);
+
+        commentArrayList =new ArrayList<Comment>();
+        commentCount = likesCount = 0;
+        this.postString = postString;
+        this.user = user;
+        this.id = postId;
+        this.storedImage = imageData;
     }
 
     public void addComment(String commentString, String user){

@@ -34,9 +34,10 @@ public class NewPost extends AppCompatActivity {
     private EditText eventTitleEditText;
     private TextView tagEditText;
     private boolean dateSet = false;
-    //Jerry Image
+    // Image data
     private ImageView imageUpload;
     private Button imageUploadButton;
+    private Uri imageData;
     private static final int RESULT_LOAD_IMAGE = 1;
 
     @Override
@@ -54,6 +55,7 @@ public class NewPost extends AppCompatActivity {
         imageUpload = findViewById(R.id.imageViewUploadPost);
         imageUploadButton = findViewById(R.id.UploadImage_button_newpost);
 
+
         //submits entreis when submit button is pressed
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +63,7 @@ public class NewPost extends AppCompatActivity {
 
                 String text = postContent.getText().toString();
                 Log.d("Post Content", "" + text);
-                Post thisPost = new Post(text, "User1", postArrayList.size());
+                Post thisPost = new Post(text, "User1", postArrayList.size(), imageData);
 
                 thisPost.setTag(tagEditText.getText().toString());
                 thisPost.setTitle(eventTitleEditText.getText().toString());
@@ -116,12 +118,15 @@ public class NewPost extends AppCompatActivity {
             public void onClick(View view){
                 Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
-
             }
-
-
         } );
-
+        imageUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+            }
+        });
     }
 
     //Needed for Image upload
@@ -129,8 +134,8 @@ public class NewPost extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
-            imageUpload.setImageURI(selectedImage);
+            imageData = data.getData();
+            imageUpload.setImageURI(imageData);
         }
     }
 }
