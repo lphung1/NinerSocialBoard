@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/postEditText_newPost"
         android:layout_width="0dp"
-        android:layout_height="174dp"
+        android:layout_height="205dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -149,7 +149,7 @@
     <ImageView
         android:id="@+id/imageViewUploadPost"
         android:layout_width="0dp"
-        android:layout_height="204dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
