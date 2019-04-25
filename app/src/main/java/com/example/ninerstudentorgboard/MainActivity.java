@@ -108,14 +108,14 @@ public class MainActivity extends AppCompatActivity
         MenuItem menuItem = menu.findItem(R.id.action_search);
 
         SearchView searchView = (SearchView) menuItem.getActionView();
-        final ArrayList<Post> searchArrayList = new ArrayList<Post>();
+
 
         SearchManager sm = (SearchManager) this.getSystemService(Context.SEARCH_SERVICE);
         searchView.setSearchableInfo(sm.getSearchableInfo(this.getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-
+                ArrayList<Post> searchArrayList = new ArrayList<Post>();
                 String input = s.toLowerCase();
                 for(int i = 0; postArrayList.size() > i; i++){
                     if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
@@ -136,17 +136,19 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public boolean onQueryTextChange(String s) {
-//                String input = s.toLowerCase();
-//                for(int i = 0; postArrayList.size() > i; i++){
-//                    if(postArrayList.get(i).getPostString().toLowerCase().contains(input)){
-//                        searchArrayList.add(postArrayList.get(i));
-//                    }
-//                }
-//
-//
-//                postListFragment.adapter.setFilter(searchArrayList);
 
+                if(!s.isEmpty()) {
 
+                    ArrayList<Post> searchArrayList = new ArrayList<Post>();
+                    String input = s.toLowerCase();
+                    for (int i = 0; postArrayList.size() > i; i++) {
+                        if (postArrayList.get(i).getPostString().toLowerCase().contains(input)) {
+                            searchArrayList.add(postArrayList.get(i));
+                        }
+                    }
+                    postListFragment.adapter.setFilter(searchArrayList);
+
+                }
                 Log.d("OnQueryTextListener", "String " + s);
                 Log.d("OnQueryTextListener", "postArrayList  " + postArrayList.size());
                 Log.d("OnQueryTextListener", "mresultlist  " + postListFragment.adapter.getmResultListSize());
