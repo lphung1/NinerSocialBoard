@@ -18,7 +18,7 @@
             android:id="@+id/postDetailsContainer"
             layout="@layout/post_item"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/commentListView_newCommentActivity"
             app:layout_constraintEnd_toEndOf="parent"

@@ -169,7 +169,7 @@ public class Post implements Serializable {
     public Uri getStoredImage(){
         return storedImage;
     }
-    
+
     public void setAuthor(User A){
         this.author = A;
     }
