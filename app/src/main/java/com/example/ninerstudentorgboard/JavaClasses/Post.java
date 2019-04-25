@@ -21,7 +21,7 @@ public class Post implements Serializable {
 
     public Post() {
     }
-
+    //new comment
     public Post(String postString, String user, int postId) {
 
         Calendar cal = Calendar.getInstance();
