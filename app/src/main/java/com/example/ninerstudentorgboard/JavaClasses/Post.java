@@ -1,5 +1,8 @@
 package com.example.ninerstudentorgboard.JavaClasses;
 
+import android.net.Uri;
+import android.support.annotation.Nullable;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -11,22 +14,42 @@ public class Post implements Serializable {
     String postString, user, location, postDateString, eventDateString, tag, title;
     int id, commentCount, likesCount;
     ArrayList<Comment> commentArrayList;
+    Uri storedImage;
 
+    User author; //Stores reference to user that created the post.
+    Date timestamp;
 
     public Post() {
     }
 
     public Post(String postString, String user, int postId) {
+
         Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-        DateFormat df;
-        df = DateFormat.getDateInstance(DateFormat.FULL);
-        postDateString = df.format(date);
+        timestamp = cal.getTime();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+        postDateString = df.format(timestamp);
+
         commentArrayList =new ArrayList<Comment>();
         commentCount = likesCount = 0;
         this.postString = postString;
         this.user = user;
         this.id = postId;
+        this.storedImage = null;
+    }
+
+    public Post(String postString, String user, int postId, @Nullable Uri imageData) {
+
+        Calendar cal = Calendar.getInstance();
+        timestamp = cal.getTime();
+        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL);
+        postDateString = df.format(timestamp);
+
+        commentArrayList =new ArrayList<Comment>();
+        commentCount = likesCount = 0;
+        this.postString = postString;
+        this.user = user;
+        this.id = postId;
+        this.storedImage = imageData;
     }
 
     public void addComment(String commentString, String user){
@@ -41,6 +64,10 @@ public class Post implements Serializable {
 
     }
 
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
     public String getEventDateString() {
         return eventDateString;
     }
@@ -49,6 +76,9 @@ public class Post implements Serializable {
         this.eventDateString = eventDateString;
     }
 
+    public void setTimestamp(Date d){
+        timestamp = d;
+    }
 
     public String getTitle() {
         return title;
@@ -135,4 +165,17 @@ public class Post implements Serializable {
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
     }
+
+    public Uri getStoredImage(){
+        return storedImage;
+    }
+
+    public void setAuthor(User A){
+        this.author = A;
+    }
+
+    public User getAuthor(){
+        return author;
+    }
 }
+

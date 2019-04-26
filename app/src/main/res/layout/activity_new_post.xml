@@ -8,38 +8,45 @@
     tools:context=".NewPost">
 
 
-
-
-
-    <TextView
-        android:id="@+id/textView3"
+    <Button
+        android:id="@+id/UploadImage_button_newpost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="New Post"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/gold_button_shape"
+        android:text="Upload Image"
+        android:textAppearance="@style/TextAppearance.Title.White"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/submit_newPost"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/cancel_button_newpost"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.757" />
 
     <EditText
         android:id="@+id/postEditText_newPost"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="205dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_posts"
         android:ems="10"
         android:gravity="top"
         android:hint="Say something"
         android:padding="16dp"
-        android:background="@drawable/rounded_posts"
         android:textAlignment="gravity"
+        android:textAppearance="@style/TextAppearance.Title"
         app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postTitleEditText_newPost" />
+        app:layout_constraintTop_toBottomOf="@+id/postTitleEditText_newPost"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/tagEditText_newPost"
@@ -47,13 +54,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_posts"
         android:ems="10"
         android:hint="Enter a tag as #OrgName"
         android:inputType="textPersonName"
         android:padding="16dp"
         android:textAlignment="gravity"
+        android:textAppearance="@style/TextAppearance.Title"
         app:layout_constraintBottom_toTopOf="@+id/selectDateTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -62,6 +70,7 @@
     <TextView
         android:id="@+id/selectDateTextView"
         android:layout_width="0dp"
+        android:textAppearance="@style/TextAppearance.Second"
         android:background="@drawable/rounded_posts"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -69,7 +78,9 @@
         android:layout_marginBottom="16dp"
         android:hint="Select the event date"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
+        android:textSize="16dp"
+        android:ems="10"
+        android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -78,14 +89,17 @@
     <TextView
         android:id="@+id/textView6"
         android:layout_width="0dp"
+        android:textAppearance="@style/TextAppearance.Second"
         android:background="@drawable/rounded_posts"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:hint="Event time (Optional)"
+        android:ems="10"
+        android:padding="8dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="24sp"
+        android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/cancel_button_newpost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -95,10 +109,11 @@
         android:id="@+id/cancel_button_newpost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="17dp"
         android:layout_marginBottom="17dp"
+        android:background="@drawable/gold_button_shape"
         android:text="Cancel"
-        android:background="@color/buttons"
+        android:textAppearance="@style/TextAppearance.Title.White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -109,7 +124,8 @@
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="17dp"
         android:text="Submit"
-        android:background="@color/buttons"
+        android:background="@drawable/gold_button_shape"
+        android:textAppearance="@style/TextAppearance.Title.White"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -123,10 +139,27 @@
         android:background="@drawable/rounded_posts"
         android:ems="10"
         android:hint="Event Title"
-        android:inputType="textPersonName"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewUploadPost"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tagEditText_newPost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postEditText_newPost"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/add_photo" />
 
 </android.support.constraint.ConstraintLayout>

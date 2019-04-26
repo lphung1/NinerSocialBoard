@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.ninerstudentorgboard.JavaClasses.Post;
+
+import java.util.ArrayList;
 
 
 /**
@@ -23,11 +28,15 @@ public class PostListFragment extends Fragment {
 
     CustomAdapterPostList adapter;
 
-    public void updateFragment1ListView(){
+
+
+    public void updateFragmentListView(){
 
         adapter.notifyDataSetChanged();
 
     }
+
+
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -37,7 +46,7 @@ public class PostListFragment extends Fragment {
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
+     * fragment (e.g. upon screen ori_entation changes).
      */
     public PostListFragment(){
     }
@@ -66,11 +75,14 @@ public class PostListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        adapter = new CustomAdapterPostList(getActivity(), R.layout.post_item, MainActivity.postArrayList);
+
+        adapter = new CustomAdapterPostList(getActivity(), R.layout.post_item, ((MainActivity)getActivity()).getPostListArray() );
         View view = inflater.inflate(R.layout.content_main, container, false);
         ListView listView = view.findViewById(R.id.content_main_listview);
+
+
         // Set the adapter
-        adapter.notifyDataSetChanged();
+
         listView.setAdapter(adapter);
 
         if (container != null) {
@@ -89,6 +101,9 @@ public class PostListFragment extends Fragment {
 //                Log.d("Item pressed ", "From PostListFragment " + i);
 //            }
 //        });
+
+
+
 
 
         return view;
