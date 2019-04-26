@@ -16,7 +16,7 @@ public class Post implements Serializable {
     ArrayList<Comment> commentArrayList;
     Uri storedImage;
 
-    User username; //Stores reference to user that created the post.
+    User author; //Stores reference to user that created the post.
     Date timestamp;
 
     public Post() {
@@ -168,6 +168,14 @@ public class Post implements Serializable {
 
     public Uri getStoredImage(){
         return storedImage;
+    }
+
+    public void setAuthor(User A){
+        this.author = A;
+    }
+
+    public User getAuthor(){
+        return author;
     }
 }
 
